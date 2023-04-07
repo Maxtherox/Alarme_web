@@ -1,0 +1,45 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --bg-color: #121214;
+    --primary-color:  #42D3FF;
+    --text-color: #ffffff;
+    --base-color: 194;
+    --bg-primary-transparent: hsla(194, 100%, 63%, 0.13);
+
+    font-size: 62.5%;
+
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+
+    font-family: 'Roboto', 'Sans Serif';
+}
+
+button {
+    background-color: transparent;
+    border:none;
+    cursor: pointer;
+}
+
+.hide {
+    display: none;
+}
+
+#timer {
+    font-size: 8.8rem ;
+    font-weight: bold;
+    line-height: 103px;
+
+    display: flex;
+}
+
+#controls {
+    background-color: var(--bg-primary-transparent);
+}
