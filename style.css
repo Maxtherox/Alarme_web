@@ -6,11 +6,11 @@
 
 :root {
     --bg-color: #121214;
-    --primary-color:  #42D3FF;
+    
     --text-color: #ffffff;
     --base-color: 194;
-    --bg-primary-transparent: hsla(194, 100%, 63%, 0.13);
-
+    --bg-primary-transparent: hsl(var(--base-color), 100%, 63%, 0.13);
+    --primary-color:  hsl(var(--base-color), 100%, 63%);
     font-size: 62.5%;
 
 }
@@ -20,6 +20,8 @@ body {
     color: var(--text-color);
 
     font-family: 'Roboto', 'Sans Serif';
+    display: grid;
+    min-height: 100vh;
 }
 
 button {
@@ -32,14 +34,47 @@ button {
     display: none;
 }
 
+.play svg path,
+.pause svg path,
+.sound-on svg path{
+    fill: var(--primary-color);
+}
+
+button svg {
+    width: clamp(3.2rem, 2rem + 12vw, 6.4rem);
+}
+
+main {
+    align-self: end;
+    justify-self: center;
+}
+
+footer {
+    align-self: end;
+    justify-self: end;
+
+    padding: 0 4rem 3.2rem 0 
+}
+
 #timer {
-    font-size: 8.8rem ;
+    font-size: clamp(4rem, 4rem + 10vw , 8.8rem) ;
     font-weight: bold;
     line-height: 103px;
 
     display: flex;
+    margin-bottom: 1.6rem;
 }
 
 #controls {
-    background-color: var(--bg-primary-transparent);
+    background: var(--bg-primary-transparent);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3.2rem;
+
+    border-radius: 9999px;
+
+    width: clamp(10rem, 10rem + 30vw, 22.8rem);
+    height: clamp(8rem, 5rem + 10vh, 10.8rem);
 }
