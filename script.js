@@ -57,6 +57,7 @@ function countdown(){
 // programação imperativa
 //eventd driven
 //callback (toda função que você passa como argumento para outra função, é um callback.)
+//refatoração
 buttonPlay.addEventListener('click', function(){
     buttonPlay.classList.add('hide')
     buttonPause.classList.remove('hide')
