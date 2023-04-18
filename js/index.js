@@ -1,7 +1,9 @@
 //ES MODULES
 
-import resetControls from "./controls.js"// default export
-import {Timer} from "./timer.js" //named import
+//import resetControls from "./controls.js"// default export
+import Controls from "./controls.js"
+import Timer from "./timer.js" 
+//import {Timer} from "./timer.js" //named import
 
 //dom
 // document objetct model
@@ -17,16 +19,22 @@ const buttonSoundOn = document.querySelector('.sound-on')
 const buttonSoundOff = document.querySelector('.sound-off')
 const minutesDisplay = document.querySelector('.minutes')
 const secondsDisplay = document.querySelector('.seconds')
-let minutes = Number(minutesDisplay.textContent)
-let timertTimeOut
+
+
 
 //injeção de dependencias
+
+const controls = Controls ({
+    buttonPlay,
+    buttonPause,
+    buttonStop,
+    buttonSet
+})
 
 const timer = Timer( {
     minutesDisplay, 
     secondsDisplay, 
-    timertTimeOut, 
-    resetControls,
+    resetControls: controls.reset,
 })
 
 // programação imperativa
@@ -34,25 +42,18 @@ const timer = Timer( {
 //callback (toda função que você passa como argumento para outra função, é um callback.)
 //refatoração
 buttonPlay.addEventListener('click', function(){
-    buttonPlay.classList.add('hide')
-    buttonPause.classList.remove('hide')
-    buttonSet.classList.add('hide')
-    buttonStop.classList.remove('hide')
-
+    controls.play()
     timer.countdown()
-    
 })
 
 buttonPause.addEventListener('click', function(){
-    buttonPlay.classList.remove('hide')
-    buttonPause.classList.add('hide')
-    clearTimeout(timertTimeOut)
-    
+    controls.pause()
+    timer.hold()    
 })
 
 buttonStop.addEventListener('click', function() {
-   resetControls()
-   timer.resetTimer()
+   controls.reset()
+   timer.reset()
 })
 
 buttonSoundOff.addEventListener('click', function(){
@@ -66,12 +67,13 @@ buttonSoundOn.addEventListener('click', function(){
 })
 
 buttonSet.addEventListener('click', function(){
-    let newMinutes = prompt('Quantos minutos?') || 0
-    if (!newMinutes) {
-        timer.resetTimer()
-        return
-    }
+   let newMinutes = controls.getMinutes()
 
-    minutes = newMinutes
-    updateTimerDisplay(minutes, 0)
+   if (!newMinutes) {
+    timer.reset()
+    return
+   }
+
+   timer.updateDisplay(newMinutes, 0)
+   timer.updateMinutes(newMinutes)
 })
