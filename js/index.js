@@ -9,19 +9,16 @@
 
 import Controls from "./controls.js"
 import Timer from "./timer.js" 
-import { elements } from "./elements.js"
-import Sound from "./sounds.js"
-import Events from "./events.js"
-//injeção de dependencias
-
-const {
-    buttonPause,
+import { buttonPause,
     buttonPlay,
     buttonSet,
     buttonStop,
     minutesDisplay,
-    secondsDisplay
-} = elements
+    secondsDisplay } from "./elements.js"
+import Sound from "./sounds.js"
+import Events from "./events.js"
+//injeção de dependencias
+
 
 const controls = Controls ({
     buttonPlay,
