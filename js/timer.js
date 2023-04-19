@@ -1,9 +1,5 @@
-import Sounds from "./sounds"
-const sound = Sounds({
-    minutesDisplay,
-    secondsDisplay,
-    resetControls
-})
+import Sounds from "./sounds.js"
+
 export default function Timer(
     {
     minutesDisplay, 
@@ -40,7 +36,7 @@ function countdown(){
             
             resetControls()
             updateDisplay()
-            Sounds().kitchenTimer
+            Sounds().timeEnd()
             return
         }
 
