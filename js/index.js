@@ -1,28 +1,28 @@
 //ES MODULES
-
 //import resetControls from "./controls.js"// default export
-import Controls from "./controls.js"
-import Timer from "./timer.js" 
 //import {Timer} from "./timer.js" //named import
-
 //dom
 // document objetct model
-
 //refatoração: mudar um código para deixa-lo mais entendivel
 //deixar o código mais performático
 //sem alterar suas funcionalidades
-const buttonPlay = document.querySelector('.play')
-const buttonPause =  document.querySelector('.pause')
-const buttonStop = document.querySelector('.stop')
-const buttonSet = document.querySelector('.set')
-const buttonSoundOn = document.querySelector('.sound-on')
-const buttonSoundOff = document.querySelector('.sound-off')
-const minutesDisplay = document.querySelector('.minutes')
-const secondsDisplay = document.querySelector('.seconds')
 
-
-
+import Controls from "./controls.js"
+import Timer from "./timer.js" 
+import { elements } from "./elements.js"
+import Sound from "./sounds.js"
 //injeção de dependencias
+
+const {
+    buttonPause,
+    buttonPlay,
+    buttonSet,
+    buttonStop,
+    buttonSoundOff,
+    buttonSoundOn,
+    minutesDisplay,
+    secondsDisplay
+} = elements
 
 const controls = Controls ({
     buttonPlay,
@@ -37,6 +37,8 @@ const timer = Timer( {
     resetControls: controls.reset,
 })
 
+const sound = Sound()
+
 // programação imperativa
 //eventd driven
 //callback (toda função que você passa como argumento para outra função, é um callback.)
@@ -44,16 +46,20 @@ const timer = Timer( {
 buttonPlay.addEventListener('click', function(){
     controls.play()
     timer.countdown()
+    sound.pressButton()
+    
 })
 
 buttonPause.addEventListener('click', function(){
     controls.pause()
     timer.hold()    
+    sound.pressButton()
 })
 
 buttonStop.addEventListener('click', function() {
    controls.reset()
    timer.reset()
+   sound.pressButton()
 })
 
 buttonSoundOff.addEventListener('click', function(){
