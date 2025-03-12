@@ -4,6 +4,8 @@
 
 Este projeto, o Timer MaxTR, representa um dos meus primeiros passos no desenvolvimento web. Criado durante o curso "Explorer" da Rocketseat, ele encapsula os fundamentos da construção de aplicações web interativas. O Timer MaxTR é um temporizador web, inspirado na técnica Pomodoro, que permite aos usuários gerenciar seu tempo de forma eficiente.
 
+[Clique aqui para visualizar online.](https://maxtherox.github.io/Alarme_web/)
+
 **Tecnologias Utilizadas (na época):**
 
 * **HTML:** Estruturação da página web e seus elementos.
